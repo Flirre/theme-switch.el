@@ -14,3 +14,5 @@ is their API that I am using for this little program."
  )
 
 (getJsonSunData)
+
+(defvar jsonData (getJsonSunData))
