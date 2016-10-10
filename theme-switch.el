@@ -10,19 +10,9 @@ is their API that I am using for this little program."
  :parser 'json-read
  :success (cl-function
            (lambda (&key data &allow-other-keys)
-             (message "response: %S" data))))
+             (setq jsonData data)))) ;Credits to @Jassob.
  )
 
-
-;(request
-; "http://api.sunrise-sunset.org/json?lat=57.70887&lng=11.974560&date=today"
-; :parser 'json-read
-; :success (cl-function
-;           (lambda (&key data &allow-other-keys)
-;             (message "response: %S" data))))
-
 (getJsonSunData)
-
-;(defvar jsonData getJsonSunData)
-;(jsonData)
-;(assoc 'results jsonData())
+(setq jsonData (getJsonSunData))
+(assoc 'sunrise (assoc 'results jsonData))
