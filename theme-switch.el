@@ -5,7 +5,7 @@
 "This function gets Json data from \"http://api.sunrise-sunset.org/json\". It
 is their API that I am using for this little program."
  (request
- "http://api.sunrise-sunset.org/json?lat=57.70887&lng=11.974560&date=today"
+ "http://api.sunrise-sunset.org/json"
  :params '(("lat" . "57.70887") ("lng" . "11.974560") ("date" . "today"))
  :parser 'json-read
  :success (cl-function
