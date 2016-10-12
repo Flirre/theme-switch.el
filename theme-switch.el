@@ -17,3 +17,4 @@ is their API that I am using for this little program."
 (setq jsonData (getJsonSunData))
 (setq sunrise (cdr (assoc 'sunrise (assoc 'results jsonData))))
 (setq sunset (cdr (assoc 'sunset (assoc 'results jsonData))))
+(setq current (format-time-string "%-l:%M:%S %p" (current-time)))
