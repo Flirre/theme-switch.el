@@ -15,4 +15,5 @@ is their API that I am using for this little program."
 
 (getJsonSunData)
 (setq jsonData (getJsonSunData))
-(assoc 'sunrise (assoc 'results jsonData))
+(setq sunrise (cdr (assoc 'sunrise (assoc 'results jsonData))))
+(setq sunset (cdr (assoc 'sunset (assoc 'results jsonData))))
