@@ -15,10 +15,6 @@ is their API that I am using for this little program."
 
 (defun sunnyout()
   "Checks if the current time is during sun-hours or not, in Gothenburg"
-  (
-   (setq jsonData (getJsonSunData))
-   (setq sunrise (date-to-time(cdr (assoc 'sunrise (assoc 'results jsonData)))))
+  ((setq sunrise (date-to-time(cdr (assoc 'sunrise (assoc 'results jsonData)))))
    (setq sunset (date-to-time(cdr (assoc 'sunset (assoc 'results jsonData)))))
-
-   (when (time-less-p sunrise (current-time))(time-less-p (current-time) sunset))
- )
+   (when (time-less-p sunrise (current-time)) (time-less-p (current-time) sunset))))
