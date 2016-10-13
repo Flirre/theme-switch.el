@@ -13,8 +13,17 @@ is their API that I am using for this little program."
              (setq jsonData data)))) ;Credits to @Jassob.
  )
 
-(defun sunnyout()
+
+(defun checkSun()
   "Checks if the current time is during sun-hours or not, in Gothenburg"
-  ((setq sunrise (date-to-time(cdr (assoc 'sunrise (assoc 'results jsonData)))))
-   (setq sunset (date-to-time(cdr (assoc 'sunset (assoc 'results jsonData)))))
-   (when (time-less-p sunrise (current-time)) (time-less-p (current-time) sunset))))
+  (setq sunrise (date-to-time(cdr (assoc 'sunrise (assoc 'results jsonData)))))
+  (setq sunset (date-to-time(cdr (assoc 'sunset (assoc 'results jsonData)))))
+  (when (time-less-p sunrise (current-time)) (time-less-p (current-time) sunset)))
+
+(defun sunnyout()
+  (getJsonSunData)
+  (checkSun))
+
+(defun switch-theme(darktheme lighttheme)
+  (if (sunnyout) (progn (disable-theme darktheme) (enable-theme lighttheme)) (progn (disable-theme lighttheme) (enable-theme darktheme))))
+
